@@ -1,4 +1,6 @@
 <script>
+    import { push } from "svelte-spa-router";
+
 
     let email = $state("");
     let password = $state("");
@@ -18,6 +20,7 @@
         console.log("Password:", password);
     
         //Naviguer vers le dashboard si les champs sont valides
+        push("/dashboard");
     };
 </script>
 
@@ -78,12 +81,12 @@
         padding: 0.5em 1em;
         cursor: pointer;
         border-radius: 0.3em;
-        border: 1px solid #ccc;
+        border: none;
     }
     .connexion_input {
         padding: 0.5em;
-        border: 1px solid #ccc;
-        border-radius: 0.3em;
+        border: 1px solid #eee;
+        border-radius: 1px;
     }
    
 

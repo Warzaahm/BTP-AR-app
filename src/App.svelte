@@ -1,11 +1,16 @@
 <script>
+  import Router from "svelte-spa-router";
   import Login from "./routes/login.svelte";
+  import Dashboard from "./routes/dashboard.svelte";
+  
+  const routes = {
+    "/": Login,
+    "/dashboard": Dashboard
+  };
 </script>
 
 <main>
-  
-  <Login />
- 
+  <Router {routes} />
 </main>
 
 <style>
