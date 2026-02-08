@@ -1,5 +1,6 @@
 <script>
     import Icon  from "@iconify/svelte";
+    import { push }from "svelte-spa-router";
     const burgerName = [
         { name: 'Mes chantiers', link: '/' },
         { name: 'Tableau de bord', link: '/dashboard' },
@@ -13,13 +14,17 @@
     { count: 5, label: 'À faire', icon: '📋' }
   ]);
 
-  let progress = $state(65);  
+    let progress = $state(65);  
 
-  let menuOpen = $state(false);
+    let menuOpen = $state(false);
 
-  const showResponsiveMenu = () => {
-    menuOpen = !menuOpen;
+    const showResponsiveMenu = () => {
+        menuOpen = !menuOpen;
   };
+    const handleSubmit = () => {
+        //Naviguer vers le scanner
+        push("/scanner");
+    };
 
 </script>
 
@@ -42,6 +47,7 @@
     <h2 class="dashboard_subtitle">Jean Dupont</h2>
     {/if}
 </header>
+
 {#if !menuOpen}
 <main>
     <div>
@@ -58,7 +64,7 @@
         {/each}
     </div>
 
-    <button class="dashboard_scan">SCANNER UN ELEMENT</button>
+    <button class="dashboard_scan" on:click={handleSubmit}>SCANNER UN ELEMENT</button>
 </main>
 {/if}
 
@@ -118,7 +124,7 @@
     .dashboard_burger--list a:hover {
         background-color: #f5f5f5;
         color: #FF6B00;
-    }
+    } 
 
     /* Main */
     main {
